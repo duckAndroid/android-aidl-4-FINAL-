@@ -18,10 +18,8 @@ import rx.schedulers.Schedulers;
 
 /**
  * Created by pythonCat on 2016/9/22 0022.
- *
- * @apiNote can only run on main process !!!
+ * @apiNote engine of net api
  */
-
 public class NetEngine {
 
     private static final String apiKey = "be23933faecee3c74e149bd3fdbaa6cb";

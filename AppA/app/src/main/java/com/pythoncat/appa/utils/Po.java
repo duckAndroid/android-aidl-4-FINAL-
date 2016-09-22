@@ -5,7 +5,7 @@ import android.os.Process;
 /**
  * Created by pythonCat on 2016/9/22 0022.
  *
- * @apiNote process
+ * @apiNote process api
  */
 
 public class Po {

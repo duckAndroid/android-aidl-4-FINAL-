@@ -13,16 +13,19 @@ public class PhoneNumber implements Parcelable {
 
     /**
      * errNum : 0
-     * errMsg : success
-     * retData : {"telString":"15846530170","province":"黑龙江","carrier":"黑龙江移动"}
+     * retMsg : success
+     * retData : {"phone":"18956071429","prefix":"1895607","supplier":"电信","province":"安徽","city":"合肥","suit":"189卡"}
      */
 
     public int errNum;
-    public String errMsg;
+    public String retMsg;
     /**
-     * telString : 15846530170
-     * province : 黑龙江
-     * carrier : 黑龙江移动
+     * phone : 18956071429
+     * prefix : 1895607
+     * supplier : 电信
+     * province : 安徽
+     * city : 合肥
+     * suit : 189卡
      */
 
     public PNResp retData;
@@ -35,7 +38,7 @@ public class PhoneNumber implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.errNum);
-        dest.writeString(this.errMsg);
+        dest.writeString(this.retMsg);
         dest.writeParcelable(this.retData, flags);
     }
 
@@ -44,11 +47,11 @@ public class PhoneNumber implements Parcelable {
 
     protected PhoneNumber(Parcel in) {
         this.errNum = in.readInt();
-        this.errMsg = in.readString();
+        this.retMsg = in.readString();
         this.retData = in.readParcelable(PNResp.class.getClassLoader());
     }
 
-    public static final Creator<PhoneNumber> CREATOR = new Creator<PhoneNumber>() {
+    public static final Parcelable.Creator<PhoneNumber> CREATOR = new Parcelable.Creator<PhoneNumber>() {
         @Override
         public PhoneNumber createFromParcel(Parcel source) {
             return new PhoneNumber(source);

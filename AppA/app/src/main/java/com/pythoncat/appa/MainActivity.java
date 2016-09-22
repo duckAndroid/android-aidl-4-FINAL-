@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 //                         hashCode = 13104567 thread = Binder_1　 todo --> 非UI 线程
                                     if (pn.errNum == 0) {
                                         String province = pn.retData.province;
-                                        ToastHelper.showShort("号码：" + pn.retData.telString + "的归属地为：" + province);
+                                        ToastHelper.showShort("号码：" + pn.retData.phone + "的归属地为：" + province);
                                     }
                                 }, Throwable::printStackTrace);
                     }

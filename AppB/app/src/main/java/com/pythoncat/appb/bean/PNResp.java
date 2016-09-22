@@ -9,9 +9,12 @@ import android.os.Parcelable;
  * @apiNote phone number POJO
  */
 public class PNResp implements Parcelable {
-    public String telString;
+    public String phone;
+    public String prefix;
+    public String supplier;
     public String province;
-    public String carrier;
+    public String city;
+    public String suit;
 
     @Override
     public int describeContents() {
@@ -20,21 +23,27 @@ public class PNResp implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.telString);
+        dest.writeString(this.phone);
+        dest.writeString(this.prefix);
+        dest.writeString(this.supplier);
         dest.writeString(this.province);
-        dest.writeString(this.carrier);
+        dest.writeString(this.city);
+        dest.writeString(this.suit);
     }
 
     public PNResp() {
     }
 
     protected PNResp(Parcel in) {
-        this.telString = in.readString();
+        this.phone = in.readString();
+        this.prefix = in.readString();
+        this.supplier = in.readString();
         this.province = in.readString();
-        this.carrier = in.readString();
+        this.city = in.readString();
+        this.suit = in.readString();
     }
 
-    public static final Parcelable.Creator<PNResp> CREATOR = new Parcelable.Creator<PNResp>() {
+    public static final Creator<PNResp> CREATOR = new Creator<PNResp>() {
         @Override
         public PNResp createFromParcel(Parcel source) {
             return new PNResp(source);

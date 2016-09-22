@@ -25,7 +25,7 @@ import rx.schedulers.Schedulers;
 public class NetEngine {
 
     private static final String apiKey = "be23933faecee3c74e149bd3fdbaa6cb";
-    private static final String pn = "18956071429";
+    private static final String pn = "13838387438";
 
     public static int applyTribe(int yourPid, long groupId, String nick, String iconUrl) {
         LogUtils.w("your pid = " + yourPid);

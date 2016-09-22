@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.apkfuns.logutils.LogUtils;
+import com.pythoncat.appb.engine.NetEngine;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +30,18 @@ public class MainActivity extends AppCompatActivity {
             intent.setComponent(cn);
             startActivity(intent);
             // todo: ok -> 打开 app A 成功 ！
+        });
+
+        findViewById(R.id.btn_test_api).setOnClickListener(v -> {
+            LogUtils.e("click test api.........");
+            NetEngine.attributionPhoneNumber()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(t -> {
+                        LogUtils.e(t);
+                        LogUtils.w(t.hashCode());
+                    }, Throwable::printStackTrace);
+            // todo: ok -> 接口正常
         });
     }
 }

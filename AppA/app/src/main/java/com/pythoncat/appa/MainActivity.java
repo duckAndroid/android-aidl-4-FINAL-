@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.apkfuns.logutils.LogUtils;
 import com.pythoncat.appb.RoAIDL;
+import com.pythoncat.appb.callback.Act;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         int i = roB.applyTribe();
                         LogUtils.e(" i i i i ii ==== " + i);
+                        // #############################################
+                        LogUtils.e("#############");
+                        roB.applyTribeAsync(new Act.Stub() {
+                            @Override
+                            public void call(int result) throws RemoteException {
+                                LogUtils.e("result =  " + result);
+                            }
+                        });
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }

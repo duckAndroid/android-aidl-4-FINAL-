@@ -21,4 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/open_app_a" />
+    <Button
+        android:id="@+id/btn_test_api"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test_api" />
 </LinearLayout>

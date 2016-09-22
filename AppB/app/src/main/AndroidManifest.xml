@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pythoncat.appb">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".base.MyApplication"
         android:allowBackup="true"
@@ -16,11 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!--RoService is an remote service : called by other app -->
         <service
             android:name=".service.RoService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
     </application>
 
 </manifest>

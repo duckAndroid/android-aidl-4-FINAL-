@@ -7,6 +7,7 @@ import android.os.RemoteException;
 
 import com.apkfuns.logutils.LogUtils;
 import com.pythoncat.appb.RoAIDL;
+import com.pythoncat.appb.callback.Act;
 import com.pythoncat.appb.engine.NetEngine;
 import com.pythoncat.appb.utils.Po;
 
@@ -31,6 +32,11 @@ public class RoService extends Service {
         @Override
         public int applyTribe() throws RemoteException {
             return NetEngine.applyTribe(Po.myPid(), 123456, "duck", "www.baidu.com");
+        }
+
+        @Override
+        public void applyTribeAsync(Act action) throws RemoteException {
+            NetEngine.applyTribeAsync(action);
         }
     }
 }

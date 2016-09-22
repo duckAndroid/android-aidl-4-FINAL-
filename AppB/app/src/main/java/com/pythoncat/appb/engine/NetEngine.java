@@ -13,6 +13,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by pythonCat on 2016/9/22 0022.
@@ -23,7 +25,7 @@ import rx.Observable;
 public class NetEngine {
 
     private static final String apiKey = "be23933faecee3c74e149bd3fdbaa6cb";
-    private static final String pn = "18956071234";
+    private static final String pn = "18956071429";
 
     public static int applyTribe(int yourPid, long groupId, String nick, String iconUrl) {
         LogUtils.w("your pid = " + yourPid);
@@ -34,6 +36,8 @@ public class NetEngine {
 
     public static void applyTribeAsync(Act ac) {
         Observable.interval(1, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .take(4)
                 .subscribe(
                         t -> LogUtils.e(" t = " + t),
@@ -45,17 +49,7 @@ public class NetEngine {
                                 e.printStackTrace();
                                 throw new RuntimeException(e);
                             }
-                        });
-//        Observable.timer(3, TimeUnit.SECONDS)
-//                .subscribe(t -> {
-//                    try {
-//                        ac.call(1024);
-//                    } catch (RemoteException e) {
-//                        e.printStackTrace();
-//                        throw new RuntimeException(e);
-//                    }
-//                }, Throwable::printStackTrace);  // 模拟延时回调ok
-
+                        }); // 模拟延时回调ok
     }
 
     public static Observable<PhoneNumber> attributionPhoneNumber() {

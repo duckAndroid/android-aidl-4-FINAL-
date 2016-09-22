@@ -8,8 +8,12 @@ import android.os.RemoteException;
 import com.apkfuns.logutils.LogUtils;
 import com.pythoncat.appb.RoAIDL;
 import com.pythoncat.appb.callback.Act;
+import com.pythoncat.appb.callback.ActPN;
 import com.pythoncat.appb.engine.NetEngine;
 import com.pythoncat.appb.utils.Po;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class RoService extends Service {
     public RoService() {
@@ -37,6 +41,21 @@ public class RoService extends Service {
         @Override
         public void applyTribeAsync(Act action) throws RemoteException {
             NetEngine.applyTribeAsync(action);
+        }
+
+        @Override
+        public void attribution(ActPN apn) throws RemoteException {
+            NetEngine.attributionPhoneNumber()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(t -> {
+                        try {
+                            apn.call(t);
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                            throw new RuntimeException(e);
+                        }
+                    }, Throwable::printStackTrace);
         }
     }
 }

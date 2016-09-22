@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AppA</string>
-    <string name="call_app_b">调用App B 中的方法</string>
+    <string name="call_app_b">绑定 App B 中的 服务</string>
+    <string name="b_int">调用 B 中的 int 同步方法</string>
+    <string name="b_int_async">调用 B 中的 int 异步方法</string>
+    <string name="b">调用 B 的查询号码归属地</string>
 </resources>
